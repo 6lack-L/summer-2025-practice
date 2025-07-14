@@ -19,9 +19,32 @@ def cube_root(n):
         return int(cube)
     else:
         return "Error"
+def even_index(str=''):
+    """Returns characters at even indices of a string."""
+    #?lesson 5
+    return str[::2]
 
+import random
+def bisection_search(n=0):
+    lst = [random.randint(0, 100) for _ in range(1000)]
+    halfway: int = len(lst) // 2
+    high = len(lst)
+    low = 0
 
+    if n == halfway:
+        return halfway
 
+    while n > low:
+        low = halfway
+        for _ in lst[low:halfway]:
+            if n == _:
+                return _
+            break
+        for _ in lst[halfway:high]:
+            if n == _:
+                return _
+
+    
 def main():
     a = input("Enter a number: ")
     b = input("Enter another number: ")
@@ -41,5 +64,13 @@ def main():
 
     root = cube_root(n=n)
     print(f"The cube root of {n} is: {root}")
+
+    string = input("Enter a string: ")
+    even_chars = even_index(string)
+    print(f"Characters at even indices: {even_chars}")
+
+    n = int(input("search for a number"))
+    ans = bisection_search(n)
+    print(ans)
 if __name__ == "__main__":
     main()
