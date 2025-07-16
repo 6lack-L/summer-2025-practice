@@ -1,5 +1,3 @@
-import fractions
-import math
 import decimal
 
 class FinanceCalculator:
@@ -8,25 +6,26 @@ class FinanceCalculator:
     """
 
     def __init__(self, principal=0, rate=0, time=0):
+        self = self
         self.principal = principal
         self.rate = rate
         self.time = time
 
-    def calculate_loan_payment(self):
+    def pva(self,compunding_frequency=0):
         """
-        Calculate the monthly payment for a loan.
+        Calculate the present value payment of annuity.
         
         :param principal: Total amount of the loan
         :param rate: Annual interest rate (as a decimal)
         :param time: Time in years
         :return: Monthly payment amount
         """
-        monthly_rate = rate / 12
-        number_of_payments = time * 12
-        return principal * (monthly_rate * (1 + monthly_rate) ** number_of_payments) / ((1 + monthly_rate) ** number_of_payments - 1)
+        monthly_rate = self.rate / compunding_frequency
+        number_of_payments = self.time * compunding_frequency
+        return self.principal * (1 - (1/(1 + monthly_rate) ** number_of_payments))/ monthly_rate
 
 
-    def calculate_future_value(principal, rate, time):
+    def calculate_future_value(self):
         """
         Calculate the future value of an investment.
 
@@ -35,9 +34,9 @@ class FinanceCalculator:
         :param time: Time in years
         :return: Future value of the investment
         """
-        return principal * (1 + rate) ** time
+        return self.principal * (1 + self.rate) ** self.time
 
-    def present_value(future_value, rate, time):
+    def present_value(self,future_value):
         """
         Calculate the present value of a future amount.
 
@@ -46,9 +45,9 @@ class FinanceCalculator:
         :param time: Time in years
         :return: Present value of the future amount
         """
-        return future_value / (1 + rate) ** time
+        return future_value / (1 + self.rate) ** self.time
 
-    def npv(rate=0, cash_flows=):
+    def npv(self,cash_flows=None):
         """
         Calculate the net present value of a series of cash flows.
 
@@ -56,4 +55,10 @@ class FinanceCalculator:
         :param cash_flows: List of cash flows
         :return: Net present value
     """
-        return
+
+        if cash_flows is None:
+            cash_flows = []
+        npv = 0
+        for t, cash_flow in enumerate(cash_flows):
+            npv += cash_flow / (1 + self.rate) ** t
+        return npv
