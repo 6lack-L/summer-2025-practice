@@ -26,33 +26,34 @@ class FinanceCalculator:
         return principal * (monthly_rate * (1 + monthly_rate) ** number_of_payments) / ((1 + monthly_rate) ** number_of_payments - 1)
 
 
-def calculate_future_value(principal, rate, time):
-    """
-    Calculate the future value of an investment.
-    
-    :param principal: Initial amount of money invested
-    :param rate: Annual interest rate (as a decimal)
-    :param time: Time in years
-    :return: Future value of the investment
-    """
-    return principal * (1 + rate) ** time
+    def calculate_future_value(principal, rate, time):
+        """
+        Calculate the future value of an investment.
 
-def present_value(future_value, rate, time):
-    """
-    Calculate the present value of a future amount.
-    
-    :param future_value: Future amount of money
-    :param rate: Annual interest rate (as a decimal)
-    :param time: Time in years
-    :return: Present value of the future amount
-    """
-    return future_value / (1 + rate) ** time
+        :param principal: Initial amount of money invested
+        :param rate: Annual interest rate (as a decimal)
+        :param time: Time in years
+        :return: Future value of the investment
+        """
+        return principal * (1 + rate) ** time
 
-def npv(rate=0, cash_flows=):
+    def present_value(future_value, rate, time):
+        """
+        Calculate the present value of a future amount.
+
+        :param future_value: Future amount of money
+        :param rate: Annual interest rate (as a decimal)
+        :param time: Time in years
+        :return: Present value of the future amount
+        """
+        return future_value / (1 + rate) ** time
+
+    def npv(rate=0, cash_flows=):
+        """
+        Calculate the net present value of a series of cash flows.
+
+        :param rate: Discount rate (as a decimal)
+        :param cash_flows: List of cash flows
+        :return: Net present value
     """
-    Calculate the net present value of a series of cash flows.
-    
-    :param rate: Discount rate (as a decimal)
-    :param cash_flows: List of cash flows
-    :return: Net present value
-    """
+        return
