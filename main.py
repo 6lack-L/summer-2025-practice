@@ -73,4 +73,4 @@ def main():
     ans = bisection_search(n)
     print(ans)
 if __name__ == "__main__":
-    main()
+    main() 

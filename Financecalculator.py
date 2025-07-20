@@ -5,7 +5,7 @@ class FinanceCalculator:
     A simple finance calculator for various financial calculations.
     """
 
-    def __init__(self, principal=0, rate=0, time=0):
+    def __init__(self, principal=0.0, rate=0.0, time=0):
         self = self
         self.principal = principal
         self.rate = rate
@@ -62,3 +62,44 @@ class FinanceCalculator:
         for t, cash_flow in enumerate(cash_flows):
             npv += cash_flow / (1 + self.rate) ** t
         return npv
+
+def main():
+    op = input(
+        "Welcome to the Finance Calculator! which function would you like to use?\n1: Calculate Future Value\n2: Calculate Present Value\n3: Calculate Net Present Value\n4: Calculate Present Value of Annuity \n(Press Enter to continue): "
+               )
+    mydict = {
+        "1": "Calculate Future Value",
+        "2": "Calculate Present Value",
+        "3": "Calculate Net Present Value",
+        "4": "Calculate Present Value of Annuity"
+    }
+
+    if op in mydict:
+        print(f"You selected: {mydict[op]}")
+        principal = float(input("Enter the principal amount: "))
+        rate = float(input("Enter the annual interest rate (as a decimal): "))
+        time = int(input("Enter the time in years: "))
+        calculator = FinanceCalculator(principal, rate, time)
+
+        if op == "1":
+            future_value = calculator.calculate_future_value()
+            print(f"The future value of the investment is: {future_value}")
+        elif op == "2":     
+            future_value = float(input("Enter the future value amount: "))
+            present_value = calculator.present_value(future_value)
+            print(f"The present value of the future amount is: {present_value}")
+        elif op == "3":
+            cash_flows = input("Enter the cash flows separated by commas: ")
+            cash_flows = [float(cf) for cf in cash_flows.split(",")]
+            npv = calculator.npv(cash_flows)
+            print(f"The net present value of the cash flows is: {npv}")
+        elif op == "4":
+            compounding_frequency = int(input("Enter the compoundin frequency (e.g., 12 for monthly or 1 for anually): "))
+            pva = calculator.pva(compounding_frequency)
+            print(f"The present value payment of annuity is: {pva}")
+    else:
+        print("Invalid option selected. Please try again.")
+        return
+
+if __name__ == "__main__":
+    main()
