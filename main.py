@@ -27,28 +27,20 @@ def even_index(str=''):
 def bisection_search(n=0):
     """Performs a bisection search to find a number."""
     #?lesson 6
-    high = 1000
-    low = 0
-    middle = high//2
+    high = 1001
+    low = lst[0]
+    middle = (high+low)//2
     guess = 1
+    if n == middle:
+        return middle, guess
     while n != middle:
-        middle = (high-low)//2
-        low = middle
+        if n > middle:
+            low = middle
+        elif n < middle:
+            high = middle
+        middle = (high+low)//2
         guess += 1
-        print(middle)
-        print(guess)
-        if low == high:
-            low = 0
-            high = middle//2
-            middle = high//2
-            break
-    while n != middle:
-        print(middle)
-        middle = (high-low)//2
-        high = middle
-        guess += 1
-    answer = middle
-    return answer, guess
+    return middle, guess
 
 def main():
 #    a = input("Enter a number: ")
@@ -74,8 +66,8 @@ def main():
 #    even_chars = even_index(string)
 #    print(f"Characters at even indices: {even_chars}")
 #
-    n = int(input("search for a number"))
+    n = int(input("search for a number: "))
     ans, guess = bisection_search(n)
-    print(ans)
+    print(f"Answer: {ans},\n Guess: {guess}")
 if __name__ == "__main__":
     main() 
