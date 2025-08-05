@@ -49,53 +49,59 @@ def eval_quadratic(a=0, b=0, c=0, x=0):
     x: numerical value at which to evaluate the quadratic.
     Returns the value of the quadratic a×x² + b×x + c.
     """
-    # Your code here
     return (a * x ** 2) + (b * x) + c
+
+def two_quadratics(*args):
+    coe = list(args)
+    if len(args) < 3:
+        return "try with 3 arguments"
+    else:
+        print(eval_quadratic(coe[0], coe[1], coe[2], coe[3]) + eval_quadratic(coe[-4], coe[-3], coe[-2], coe[-1]))
 
 
 def main():
-#? Lesson 1
-    a = input("Enter a number: ")
-    b = input("Enter another number: ")
-    c = input("Enter a third number: ")
-    total = add_numbers(int(a), int(b), int(c))
-    print(f"The total is: {total}")
+##? Lesson 1
+#    a = input("Enter a number: ")
+#    b = input("Enter another number: ")
+#    c = input("Enter a third number: ")
+#    total = add_numbers(int(a), int(b), int(c))
+#    print(f"The total is: {total}")
+#
+##? Lesson 2
+#    if check_positive(total):
+#        print("The total is positive.")
+#    elif total == 0:
+#        print("The total is Zero.")
+#    else:
+#        print("The total is negative.")
+#
+##? Lesson 3
+#    n = int(input("How many times to print 'hello world'? "))
+#    print_hello_world(n)
+#
+##? Lesson 4
+#    root = cube_root(n=n)
+#    print(f"The cube root of {n} is: {root}")
+#
+##? Lesson 5
+#    string = input("Enter a string: ")
+#    even_chars = even_index(string)
+#    print(f"Characters at even indices: {even_chars}")
+#
+##? Lesson 6
+#    n = int(input("search for a number: "))
+#    ans, guess = bisection_search(n)
+#    print(f"Answer: {ans},\n Guess: {guess}")    
+#
+##? Lesson 7
+#    a = int(input("Enter coefficient 1: "))
+#    b = int(input("Enter coefficient 2: "))
+#    c = int(input("Enter coefficient 3: "))
+#    x = int(input("Enter X variable: "))
+#    ans = eval_quadratic(a,b,c,x)
+#    print(ans)
 
-#? Lesson 2
-    if check_positive(total):
-        print("The total is positive.")
-    elif total == 0:
-        print("The total is Zero.")
-    else:
-        print("The total is negative.")
-
-#? Lesson 3
-    n = int(input("How many times to print 'hello world'? "))
-    print_hello_world(n)
-
-#? Lesson 4
-    root = cube_root(n=n)
-    print(f"The cube root of {n} is: {root}")
-
-#? Lesson 5
-    string = input("Enter a string: ")
-    even_chars = even_index(string)
-    print(f"Characters at even indices: {even_chars}")
-
-#? Lesson 6
-    n = int(input("search for a number: "))
-    ans, guess = bisection_search(n)
-    print(f"Answer: {ans},\n Guess: {guess}")    
-
-#? Lesson 7
-    a = int(input("Enter coefficient 1: "))
-    b = int(input("Enter coefficient 2: "))
-    c = int(input("Enter coefficient 3: "))
-    x = int(input("Enter X variable: "))
-    ans = eval_quadratic(a,b,c,x)
-    print(ans)
-
-
+    two_quadratics(1, 1, 1, 2, 1, 1, 1, 2)
 
 if __name__ == "__main__":
     main() 
