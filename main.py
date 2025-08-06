@@ -23,7 +23,6 @@ def even_index(str=''):
     """Returns characters at even indices of a string."""
     #?lesson 5
     return str[::2]
-
 def bisection_search(n=0):
     """Performs a bisection(spits array in half using a double pointer......(high + low)//2 ) search to find a number."""
     #?lesson 6
@@ -41,7 +40,6 @@ def bisection_search(n=0):
         middle = (high+low)//2
         guess += 1
     return middle, guess
-
 def eval_quadratic(a=0, b=0, c=0, x=0):
     """
     #? Lesson 7
@@ -57,10 +55,8 @@ def two_quadratics(*args):
         return "try with 3 arguments"
     else:
         print(eval_quadratic(coe[0], coe[1], coe[2], coe[3]) + eval_quadratic(coe[-4], coe[-3], coe[-2], coe[-1]))
-
-
-#?lesson 8
 def same_chars(s1, s2):
+#?lesson 8
     """
     s1 and s2 are strings
     Returns boolean True is a character in s1 is also in s2, and vice 
@@ -69,6 +65,35 @@ def same_chars(s1, s2):
     lst1 = set(s1)
     lst2 = set(s2)
     return lst1.issubset(lst2) and lst1.issuperset(lst2)
+def dot_product(tA, tB):
+    """
+    tA: a tuple of numbers
+    tB: a tuple of numbers of the same length as tA
+    Assumes tA and tB are the same length.
+    Returns a tuple where the:
+    * first element is the length of one of the tuples
+    * second element is the sum of the pairwise products of tA and tB
+    """
+    get_len = len(tA)
+    i = 0
+    summ = 0
+    while i < get_len:
+        prod = tA[i] * tB[i]
+        summ += prod
+        i += 1
+    return (get_len, summ)
+#? Lesson 11
+def remove_and_sort(Lin, k):
+    """ Lin is a list of ints
+        k is an int >= 0
+    Mutates Lin to remove the first k elements in Lin and 
+    then sorts the remaining elements in ascending order.
+    If you run out of items to remove, Lin is mutated to an empty list.
+    Does not return anything.
+    """
+    # Your code here  
+
+
 
 def main():
 ##? Lesson 1
@@ -114,12 +139,20 @@ def main():
 ##? Lesson 7 - part 2
 #    two_quadratics(1, 1, 1, 2, 1, 1, 1, 2)
 #
-#
 #? Lesson 8
-    print(same_chars("abc", "cab"))     # prints True
-    print(same_chars("abccc", "caaab")) # prints True
-    print(same_chars("abcd", "cabaa"))  # prints False
-    print(same_chars("abcabc", "cabz")) # prints False
-
+#    print(same_chars("abc", "cab"))     # prints True
+#    print(same_chars("abccc", "caaab")) # prints True
+#    print(same_chars("abcd", "cabaa"))  # prints False
+#    print(same_chars("abcabc", "cabz")) # prints False
+#
+#? Lesson 9
+#    tA = (1, 3, 3)
+#    tB = (4, 5, 6)  
+#    print(dot_product(tA, tB))     #*prints (3,32)
+#? Lesson 11
+    L = [1,6,3]
+    k = 1
+    remove_and_sort(L, k)
+    print(L)   #* prints the list [3, 6]
 if __name__ == "__main__":
     main() 
