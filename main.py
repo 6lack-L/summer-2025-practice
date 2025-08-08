@@ -1,3 +1,6 @@
+from hmac import new
+
+
 def add_numbers(a, b, c):
     """Adds two numbers and multiplies the result by a third number."""
     #?lesson 1
@@ -83,7 +86,7 @@ def dot_product(tA, tB):
         i += 1
     return (get_len, summ)
 #? Lesson 11
-def remove_and_sort(Lin, k):
+def remove_and_sort(Lin=[], k=0):
     """ Lin is a list of ints
         k is an int >= 0
     Mutates Lin to remove the first k elements in Lin and 
@@ -91,8 +94,20 @@ def remove_and_sort(Lin, k):
     If you run out of items to remove, Lin is mutated to an empty list.
     Does not return anything.
     """
-    # Your code here  
-
+    print(Lin)
+    i = 0
+    curr = Lin[i]
+    nxt = Lin[i+1]
+    if len(Lin) < k:
+        return []
+    for _ in range(len(Lin[:k])):
+        Lin.pop(i)
+    if Lin[i+1] is None:
+        return Lin
+    while curr > nxt:
+        Lin.pop(0)
+        Lin.append(curr)
+        return Lin
 
 
 def main():
@@ -150,9 +165,10 @@ def main():
 #    tB = (4, 5, 6)  
 #    print(dot_product(tA, tB))     #*prints (3,32)
 #? Lesson 11
-    L = [1,6,3]
-    k = 1
+    L = [1,6,3,2,4,5,2,34]
+    k = 3
     remove_and_sort(L, k)
     print(L)   #* prints the list [3, 6]
+    print(L[1])
 if __name__ == "__main__":
     main() 
