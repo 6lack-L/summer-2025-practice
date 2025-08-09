@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cfa-level1-cli"
+version = "0.1.0"
+description = "A command-line interface financial calculator covering all CFA Level 1 quantitative formulas and valuations."
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.21"
+pandas = "^1.3"
+click = "^8.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
