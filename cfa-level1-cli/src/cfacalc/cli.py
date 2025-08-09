@@ -1,3 +1,6 @@
+from .tvm import TimeValueOfMoney as tvm
+
+
 class CLI:
     def __init__(self):
         self.options = {
@@ -56,8 +59,36 @@ class CLI:
             print(f"An error occurred: {e}")
 
     def calculate_future_value(self):
-        # Placeholder for future value calculation logic
-        print("Future Value calculation not implemented yet.")
+        mydict = {
+            "1": "Calculate Future Value",
+            "2": "Calculate Present Value",
+            "3": "Calculate Net Present Value",
+            "4": "Calculate Present Value of Annuity",
+            " ": "Exit"
+        }
+        op = " "
+        while op in mydict:
+            if op is not None:
+                op = input(
+                "\nCalculate the Time Value of Money! which function would you like to use?\n1: Calculate Future Value\n2: Calculate Present Value\n3: Calculate Net Present Value\n4: Calculate Present Value of Annuity\n :Exit\n(Press Enter to continue(Leave blank to Exit)): "
+                       )
+            try:
+                print(f"You selected: {mydict[op]}\n")
+                if mydict[op] == "Exit":
+                    print("\nExiting Time Value of Money.")
+                    break
+                principal = float(input("Enter the principal amount: "))
+                rate = float(input("Enter the annual interest rate (as a decimal): "))
+                time = int(input("Enter the time in years: "))
+                calc = tvm(
+                    principal=principal,
+                    rate=rate,
+                    time=time
+                    )
+                result = calc.future_value()
+                print(f"\n\b Future Value: {result}")
+            except Exception as e:
+                print(f"Error: {e}")
 
     def calculate_present_value(self):
         # Placeholder for present value calculation logic

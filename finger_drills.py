@@ -1,5 +1,3 @@
-from hmac import new
-
 
 def add_numbers(a, b, c):
     """Adds two numbers and multiplies the result by a third number."""
