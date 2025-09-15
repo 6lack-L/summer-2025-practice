@@ -1,4 +1,3 @@
-
 def add_numbers(a, b, c):
     """Adds two numbers and multiplies the result by a third number."""
     #?lesson 1
@@ -83,8 +82,8 @@ def dot_product(tA, tB):
         summ += prod
         i += 1
     return (get_len, summ)
-#? Lesson 11
 def remove_and_sort(Lin=[], k=0):
+#? Lesson 11
     """ Lin is a list of ints
         k is an int >= 0
     Mutates Lin to remove the first k elements in Lin and 
@@ -92,20 +91,36 @@ def remove_and_sort(Lin=[], k=0):
     If you run out of items to remove, Lin is mutated to an empty list.
     Does not return anything.
     """
-    print(Lin)
-    i = 0
-    curr = Lin[i]
-    nxt = Lin[i+1]
+    print(Lin,'OG')
+    #?Remove k elements
     if len(Lin) < k:
         return []
     for _ in range(len(Lin[:k])):
-        Lin.pop(i)
-    if Lin[i+1] is None:
-        return Lin
-    while curr > nxt:
         Lin.pop(0)
-        Lin.append(curr)
-        return Lin
+    #?sort
+    Lin.sort()
+def count_sqrts(lst=[]):
+    """nums_list: a list
+    Assumes that nums_list only contains positive numbers and that there are no duplicates.
+    Returns how many elements in nums_list are exact squares of elements in the same list, including itself.
+    """
+    lst2=[]
+    for i in lst:
+        lst2.append(i**2)
+    lst=set(lst)
+    lst2=set(lst2)
+    return len(lst.intersection(lst2))
+def sum_str_lengths(L):
+    """
+    L is a non-empty list containing either: 
+    * string elements or 
+    * a non-empty sublist of string elements
+    Returns the sum of the length of all strings in L and 
+    lengths of strings in the sublists of L. If L contains an 
+    element that is not a string or a list, or L's sublists 
+    contain an element that is not a string, raise a ValueError.
+    """
+
 
 
 def main():
@@ -163,10 +178,15 @@ def main():
 #    tB = (4, 5, 6)  
 #    print(dot_product(tA, tB))     #*prints (3,32)
 #? Lesson 11
-    L = [1,6,3,2,4,5,2,34]
-    k = 3
-    remove_and_sort(L, k)
-    print(L)   #* prints the list [3, 6]
-    print(L[1])
+#    L = [1,6,3,2,4,5,2,34,24,12,36]
+#    k = 3
+#    remove_and_sort(L, k)
+#    print(L)   #* prints the list [3, 6]
+#? Lesson 12
+    print(count_sqrts([3,4,2,1,9,25]))  #* prints 3
+#? Lesson 13
+    print(sum_str_lengths(["abcd", ["e", "fg"]]))  # prints 7
+    print(sum_str_lengths([12, ["e", "fg"]]))      # raises ValueError
+    print(sum_str_lengths(["abcd", [3, "fg"]]))    # raises ValueError
 if __name__ == "__main__":
     main() 
