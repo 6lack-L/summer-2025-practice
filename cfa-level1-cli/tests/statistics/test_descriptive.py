@@ -1,5 +1,5 @@
 import pytest
-from cfacalc.statistics.descriptive import mean, median, standard_deviation
+from  import mean, median, standard_deviation
 
 def test_mean():
     data = [1, 2, 3, 4, 5]

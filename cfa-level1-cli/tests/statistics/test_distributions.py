@@ -1,5 +1,5 @@
 import pytest
-from cfacalc.statistics.distributions import normal_distribution, binomial_distribution
+from src.statistics.distributions import normal_distribution, binomial_distribution
 
 def test_normal_distribution():
     mean = 0

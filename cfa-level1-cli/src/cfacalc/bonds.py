@@ -46,10 +46,10 @@ class BondCalculator:
 
 def main():
     # Example usage of the BondCalculator class
-    face_value = 1000  # Example face value
-    coupon_rate = 0.05  # 5% coupon rate
-    years_to_maturity = 10  # 10 years to maturity
-    market_rate = 0.04  # 4% market rate
+    face_value = 100.86  # Example face value
+    coupon_rate = 5.5  # 5.5% coupon rate
+    years_to_maturity = 1  # 1/4 years to maturity
+    market_rate = 0.0129  # 1.29% market rate
 
     bond_calculator = BondCalculator(face_value, coupon_rate, years_to_maturity, market_rate)
     price = bond_calculator.bond_price()
@@ -57,6 +57,7 @@ def main():
     current_yield = bond_calculator.current_yield(price)
 
     print(f"Bond Price: {price:.2f}")
+    print(f"Coupon Payment: {bond_calculator.face_value * bond_calculator.coupon_rate:.2f}")
     print(f"Yield to Maturity: {ytm:.2%}")
     print(f"Current Yield: {current_yield:.2%}")
 
